@@ -38,17 +38,7 @@ async def button(bot, update):
             reply_markup=Script.ABOUT_BUTTONS,
             disable_web_page_preview=True
         )
-    if update.data.lower() == "remove":
-        caption = ""
-        await update.edit_message_caption(
-            reply_markup=InlineKeyboardMarkup([Script.add_button])
-        )
-    if update.data.lower() == "add":
-        caption = callback_query.message.reply_to_message.caption
-        if caption:
-            await update.edit_message_caption(
-                reply_markup=InlineKeyboardMarkup([Script.remove_button])
-            )
+
         else:
             await update.message.delete()
 
