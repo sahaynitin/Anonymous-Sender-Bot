@@ -19,9 +19,6 @@ Made With 💕 By @Tellybots_4u
 Recommended
 ➠ Just Send media To Remove Caption
 
-Recommended
-➠ Just readd a Caption to add Caption
-
 Made With 💕 By @Tellybots_4u
 """
     ABOUT_TEXT = """
