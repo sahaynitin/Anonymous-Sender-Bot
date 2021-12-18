@@ -2,7 +2,7 @@ import os
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from pyrogram.types.bots_and_keyboards.reply_keyboard_markup import ReplyKeyboardMarkup
-
+from script import Script
 API_ID = int(os.environ.get("API_ID"))
 API_HASH = os.environ.get("API_HASH")
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
