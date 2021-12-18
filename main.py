@@ -20,7 +20,15 @@ async def start(bot, update):
     )
 @Tellybots.on_callback_query()
 async def button(bot, update):
-    if update.data == "home":
+chat_id = callback_query.from_user.id
+    message_id = callback_query.message.message_id
+    if callback_query.data.lower() == "home":
+        user = await anonbot.get_me()
+        mention = user["mention"]
+        await anonbot.edit_message_text(
+            chat_id=chat_id,
+            message_id=message_id,
+                 return
         await update.message.edit_text(
             text=Script.START_TEXT.format(update.from_user.mention),
             reply_markup=Script.START_BUTTONS,
