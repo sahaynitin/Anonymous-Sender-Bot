@@ -9,8 +9,6 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 
 Tellybots = Client("Anonymous Sender", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
 
-
-
 @Tellybots.on_message(filters.command(["start"]) & filters.private)
 async def start(bot, update):
     await update.reply_text(
@@ -20,6 +18,8 @@ async def start(bot, update):
     )
 @Tellybots.on_callback_query()
 async def button(bot, update):
+
+
     if update.data == "home":
         await update.message.edit_text(
             text=Script.START_TEXT.format(update.from_user.mention),
