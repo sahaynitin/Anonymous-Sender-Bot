@@ -1,4 +1,4 @@
-
+from pyrogram import Client as Tellybots
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 class Script(object):
@@ -67,7 +67,7 @@ Made With 💕 By @Tellybots_4u
     # Add caption button
     add_button = [InlineKeyboardButton("💬 Re-Add Caption 💬", callback_data="add")]
 
-@Client.on_callback_query()
+@Tellybots.on_callback_query()
 async def _calls(main, callback_query):
     chat_id = callback_query.from_user.id
     message_id = callback_query.message.message_id
