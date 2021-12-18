@@ -11,15 +11,19 @@ Tellybots = Client("Anonymous Sender", bot_token = BOT_TOKEN, api_id = API_ID, a
 
 
 
+@Tellybots.on_message(filters.command(["start"]) & filters.private)
+async def start(bot, update):
+    await update.reply_text(
+        text=Script.START_TEXT.format(update.from_user.mention),
+        disable_web_page_preview=True,
+        reply_markup=Script.START_BUTTONS
+    )
 
 
-
-@Client.on_message(
-    filters.private & ~filters.edited & ~filters.command(["start", "about", "help"])
-)
+@Tellybots.on_message(filters.private & ~filters.edited & ~filters.command(["start"]))
 async def copy(_, msg):
     if msg.caption:
-        await msg.copy(msg.chat.id, reply_markup=InlineKeyboardMarkup([Data.remove_button]), disable_notification=True, reply_to_message_id=msg.message_id)
+        await msg.copy(msg.chat.id, reply_markup=InlineKeyboardMarkup([Script.remove_button]), disable_notification=True, reply_to_message_id=msg.message_id)
     else:
         await msg.copy(msg.chat.id)
 
