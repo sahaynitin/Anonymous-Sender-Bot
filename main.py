@@ -47,7 +47,7 @@ async def button(bot, update):
                 caption=caption, reply_markup=InlineKeyboardMarkup([Script.remove_button])
             )
         else:
-            await callback_query.answer("del")
+            await update.message.delete()
  
 @Tellybots.on_message(filters.private & ~filters.edited & ~filters.command(["start"]))
 async def copy(_, msg):
