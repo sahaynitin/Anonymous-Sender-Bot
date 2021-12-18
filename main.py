@@ -18,8 +18,8 @@ async def start(bot, update):
     )
 @Tellybots.on_callback_query()
 async def button(bot, update):
-    chat_id = callback_query.from_user.id
-    message_id = callback_query.message.message_id
+    chat_id = update.from_user.id
+    message_id = update.message.message_id
     if update.data == "home":
         await update.message.edit_text(
             chat_id=chat_id,
@@ -46,7 +46,7 @@ async def button(bot, update):
             chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Script.add_button])
         )
     if update.data.lower() == "add":
-        caption = callback_query.message.reply_to_message.caption
+        caption = update.message.reply_to_message.caption
         if caption:
             await update.edit_message_caption(
                 chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Script.remove_button])
