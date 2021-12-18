@@ -20,7 +20,6 @@ async def start(bot, update):
     )
 @Tellybots.on_callback_query()
 async def button(bot, update):
-chat_id = callback_query.from_user.id
     message_id = callback_query.message.message_id
     if callback_query.data.lower() == "home":
         user = await anonbot.get_me()
