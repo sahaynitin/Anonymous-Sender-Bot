@@ -24,10 +24,6 @@ async def button(bot, update):
     if callback_query.data.lower() == "home":
         user = await anonbot.get_me()
         mention = user["mention"]
-        await anonbot.edit_message_text(
-            chat_id=chat_id,
-            message_id=message_id,
-                 return
         await update.message.edit_text(
             text=Script.START_TEXT.format(update.from_user.mention),
             reply_markup=Script.START_BUTTONS,
