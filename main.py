@@ -38,12 +38,12 @@ async def button(bot, update):
             reply_markup=Script.ABOUT_BUTTONS,
             disable_web_page_preview=True
         )
-    if callback_query.data.lower() == "remove":
+    if update.data.lower() == "remove":
         caption = ""
         await main.edit_message_caption(
             chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Script.add_button])
         )
-    if callback_query.data.lower() == "add":
+    if update.data.lower() == "add":
         caption = callback_query.message.reply_to_message.caption
         if caption:
             await main.edit_message_caption(
