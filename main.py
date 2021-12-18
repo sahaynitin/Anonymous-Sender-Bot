@@ -20,9 +20,10 @@ async def start(bot, update):
 async def button(bot, update):
     chat_id = callback_query.from_user.id
     message_id = callback_query.message.message_id
-
     if update.data == "home":
         await update.message.edit_text(
+   
+       
             text=Script.START_TEXT.format(update.from_user.mention),
             reply_markup=Script.START_BUTTONS,
             disable_web_page_preview=True
