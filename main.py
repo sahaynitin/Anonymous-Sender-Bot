@@ -10,19 +10,18 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 Tellybots = Client("Anonymous Sender", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
 
 
-@Tellybots.on_message(filters.caption & filters.private)
-async def addorno(client, message):
-    msg = message.message._id
-    await message.reply_text('start bot go to the option', quote=True,
-    reply_markup=InlineKeyboardMarkup([InlineKeyboardButton(text="yes",
-    callback_data=f"yes-{msg}"),
-    InlineKeyboardButton(text="No",
-    callback_data=f"no-{msg}")])
-    )
 
-@Tellybots.on_message(filters.private & filters.text | filters.media)
-async def SDBot(client, message):
-    await message.copy(message.chat.id)
+
+
+
+@Client.on_message(
+    filters.private & ~filters.edited & ~filters.command(["start", "about", "help"])
+)
+async def copy(_, msg):
+    if msg.caption:
+        await msg.copy(msg.chat.id, reply_markup=InlineKeyboardMarkup([Data.remove_button]), disable_notification=True, reply_to_message_id=msg.message_id)
+    else:
+        await msg.copy(msg.chat.id)
 
 print("Bot is Started")
 print("Join @Tellybots.")
