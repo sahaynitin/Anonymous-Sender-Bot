@@ -46,7 +46,7 @@ async def button(bot, update):
             caption=caption, reply_markup=InlineKeyboardMarkup([Script.add_button])
         )
         else:
-            await
+            await update.message.delete()
 
 
 @Tellybots.on_message(filters.private & ~filters.edited & ~filters.command(["start"]))
