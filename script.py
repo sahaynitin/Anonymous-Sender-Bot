@@ -86,18 +86,18 @@ async def _calls(main, callback_query):
             message_id=message_id,
             text=Script.ABOUT_TEXT,
             disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(Data.home_button),
+            reply_markup=InlineKeyboardMarkup(Script.home_button),
         )
     if callback_query.data.lower() == "remove":
         caption = ""
         await main.edit_message_caption(
-            chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Data.add_button])
+            chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Script.add_button])
         )
     if callback_query.data.lower() == "add":
         caption = callback_query.message.reply_to_message.caption
         if caption:
             await main.edit_message_caption(
-                chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Data.remove_button])
+                chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Script.remove_button])
             )
         else:
             await callback_query.answer("The original message has been deleted or their is no previous caption.", show_alert=True)
