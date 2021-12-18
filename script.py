@@ -1,6 +1,6 @@
 from pyrogram import Client as Tellybots
+from script import Script
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
 class Script(object):
 
 
