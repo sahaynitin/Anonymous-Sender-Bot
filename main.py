@@ -44,7 +44,7 @@ async def button(bot, update):
         caption = ""
         await update.edit_message_caption(
             caption=caption, reply_markup=InlineKeyboardMarkup([Script.add_button])
-        )
+            )
         else:
             await update.message.delete()
 
