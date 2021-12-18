@@ -58,7 +58,14 @@ Made With 💕 By @Tellybots_4u
         InlineKeyboardButton('⛔ Close', callback_data='close')
         ]]
     )
+    # Home Button
+    home_button = [[InlineKeyboardButton(text="🏠 Return Home 🏠", callback_data="home")]]
 
+    # Remove Caption Button
+    remove_button = [InlineKeyboardButton("� Remove Caption �", callback_data="remove")]
+
+    # Add caption button
+    add_button = [InlineKeyboardButton("💬 Re-Add Caption 💬", callback_data="add")]
 
 @Client.on_callback_query()
 async def _calls(main, callback_query):
