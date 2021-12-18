@@ -39,14 +39,7 @@ async def button(bot, update):
             text=Script.ABOUT_TEXT.format((await bot.get_me()).username),
             reply_markup=Script.ABOUT_BUTTONS,
             disable_web_page_preview=True
-        )
-    if update.data.lower() == "remove":
-        caption = ""
-        await update.edit_message_caption(
-            caption=caption, reply_markup=InlineKeyboardMarkup([Script.add_button])
-            )
-        else:
-            await update.message.delete()
+
 
 
 @Tellybots.on_message(filters.private & ~filters.edited & ~filters.command(["start"]))
