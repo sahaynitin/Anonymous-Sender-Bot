@@ -45,14 +45,8 @@ async def button(bot, update):
         await update.edit_message_caption(
             caption=caption, reply_markup=InlineKeyboardMarkup([Script.add_button])
         )
-    if update.data.lower() == "add":
-        caption = update.message.reply_to_message.caption
-        if caption:
-            await update.edit_message_caption(
-                caption=caption, reply_markup=InlineKeyboardMarkup([Script.remove_button])
-            )
         else:
-            await callback_query.answer("The original message has been deleted or their is no previous caption.", show_alert=True)
+            await
 
 
 @Tellybots.on_message(filters.private & ~filters.edited & ~filters.command(["start"]))
