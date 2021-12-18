@@ -18,8 +18,41 @@ async def start(bot, update):
         disable_web_page_preview=True,
         reply_markup=Script.START_BUTTONS
     )
-
-
+@Tellybots.on_callback_query()
+async def _calls(main, callback_query):
+    chat_id = callback_query.from_user.id
+    message_id = callback_query.message.message_id
+    if callback_query.data.lower() == "home":
+        user = await main.get_me()
+        mention = user["mention"]
+        await main.edit_message_text(
+            chat_id=chat_id,
+            message_id=message_id,
+            text=Script.START_TEXT.format(callback_query.from_user.mention, mention),
+            reply_markup=InlineKeyboardMarkup(Script.START_BUTTONS),
+        )
+    if callback_query.data.lower() == "about":
+        await main.edit_message_text(
+            chat_id=chat_id,
+            message_id=message_id,
+            text=Script.ABOUT_TEXT,
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(Script.home_button),
+        )
+    if callback_query.data.lower() == "remove":
+        caption = ""
+        await main.edit_message_caption(
+            chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Script.add_button])
+        )
+    if callback_query.data.lower() == "add":
+        caption = callback_query.message.reply_to_message.caption
+        if caption:
+            await main.edit_message_caption(
+                chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Script.remove_button])
+            )
+        else:
+            await callback_query.answer("The original message has been deleted or their is no previous caption.", show_alert=True)
+    )
 @Tellybots.on_message(filters.private & ~filters.edited & ~filters.command(["start"]))
 async def copy(_, msg):
     if msg.caption:
