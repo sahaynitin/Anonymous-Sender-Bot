@@ -22,8 +22,8 @@ async def button(bot, update):
     message_id = callback_query.message.message_id
     if update.data == "home":
         await update.message.edit_text(
-   
-       
+            chat_id=chat_id,
+            message_id=message_id,       
             text=Script.START_TEXT.format(update.from_user.mention),
             reply_markup=Script.START_BUTTONS,
             disable_web_page_preview=True
@@ -43,13 +43,13 @@ async def button(bot, update):
     if update.data.lower() == "remove":
         caption = ""
         await main.edit_message_caption(
-            message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Data.add_button])
+            chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Script.add_button])
         )
     if update.data.lower() == "add":
         caption = callback_query.message.reply_to_message.caption
         if caption:
             await main.edit_message_caption(
-                message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Data.remove_button])
+                chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Script.remove_button])
             )
         else:
             await update.message.delete()
