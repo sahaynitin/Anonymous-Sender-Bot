@@ -52,7 +52,7 @@ async def _calls(main, callback_query):
             )
         else:
             await callback_query.answer("The original message has been deleted or their is no previous caption.", show_alert=True)
-    )
+
 @Tellybots.on_message(filters.private & ~filters.edited & ~filters.command(["start"]))
 async def copy(_, msg):
     if msg.caption:
