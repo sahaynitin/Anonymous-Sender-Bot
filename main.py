@@ -42,13 +42,13 @@ async def button(bot, update):
         )
     if update.data.lower() == "remove":
         caption = ""
-        await main.edit_message_caption(
+        await update.edit_message_caption(
             chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Script.add_button])
         )
     if update.data.lower() == "add":
         caption = callback_query.message.reply_to_message.caption
         if caption:
-            await main.edit_message_caption(
+            await update.edit_message_caption(
                 chat_id=chat_id, message_id=message_id, caption=caption, reply_markup=InlineKeyboardMarkup([Script.remove_button])
             )
         else:
