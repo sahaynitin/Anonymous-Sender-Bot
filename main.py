@@ -42,7 +42,6 @@ async def button(bot, update):
  
 @Tellybots.on_message(filters.private & ~filters.edited & ~filters.command(["start"]))
 async def copy(_, msg):
-    else:
         await msg.copy(msg.chat.id)
 
 print("Bot is Started")
