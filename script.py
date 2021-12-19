@@ -9,7 +9,7 @@ Hey {}
 
 I am Telegram Anonymous Sender Bot
 
-I can help you to remove caption and tag from media
+Just Send me a post, I will send you back with anonymous sender
 
 Use Help Command to Know How to Use me
 
@@ -17,7 +17,7 @@ Made With 💕 By @Tellybots_4u
 """
     HELP_TEXT = """
 Recommended
-➠ Just Send media To Remove Caption
+➠ Just Forward Me any post or Media to get started
 
 Made With 💕 By @Tellybots_4u
 """
@@ -54,9 +54,6 @@ Made With 💕 By @Tellybots_4u
         InlineKeyboardButton('⛔ Close', callback_data='close')
         ]]
     )
-
-    # Remove Caption Button
-    remove_button = [InlineKeyboardButton("Remove Caption", callback_data="remove")]
 
 
 
