@@ -39,20 +39,12 @@ async def button(bot, update):
             text=Script.ABOUT_TEXT.format((await bot.get_me()).username),
             reply_markup=Script.ABOUT_BUTTONS,
             disable_web_page_preview=True
-        )
-    if update.data.lower() == "add":
-        caption = update.message.reply_to_message.caption
-        if caption:
-            await update.edit_message_caption(
-                caption=caption, reply_markup=InlineKeyboardMarkup([Script.remove_button])
             )
         else:
             await update.message.delete()
  
 @Tellybots.on_message(filters.private & ~filters.edited & ~filters.command(["start"]))
 async def copy(_, msg):
-    if msg.caption:
-        await msg.copy(msg.chat.id, reply_markup=InlineKeyboardMarkup([Script.remove_button]), disable_notification=True, reply_to_message_id=msg.message_id)
     else:
         await msg.copy(msg.chat.id)
 
