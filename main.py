@@ -8,7 +8,7 @@ BOT_TOKEN = os.environ.get("BOT_TOKEN")
 Tellybots = Client("Anonymous Sender", bot_token = BOT_TOKEN, api_id = API_ID, api_hash = API_HASH)
 
  
-@Tellybots.on_message(filters.private & ~filters.edited & ~filters.command(["start"]))
+@Tellybots.on_message(filters.private & ~filters.edited)
 async def copy(_, msg):
         await msg.copy(msg.chat.id)
 
